@@ -158,5 +158,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+SITE_URL = "http://hiefficiencybar.com"
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = SITE_URL+"/static/" 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = SITE_URL+"/media/"
 
-STATIC_URL = '/static/'
+try:
+    from .settings_local import *
+except ImportError as e:
+    print(e)

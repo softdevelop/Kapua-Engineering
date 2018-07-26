@@ -23,9 +23,10 @@ pip install -r requirement.txt
 ## Running
 
 1. Run server django:
+```
 
 	python manage.py runserver
-
+```
 2. Run react:
 
 
