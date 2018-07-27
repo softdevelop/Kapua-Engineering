@@ -27,4 +27,13 @@ class UserBaseAdmin(UserAdmin):
         )
 
     readonly_fields = ('fb_uid',)
+
+from treebeard.admin import TreeAdmin
+from treebeard.forms import movenodeform_factory
+
+class AL_TestNodeAdmin(TreeAdmin):
+    form = movenodeform_factory(AL_TestNode)
+
+admin.site.register(AL_TestNode, AL_TestNodeAdmin)
+
 admin.site.register(UserBase, UserBaseAdmin)

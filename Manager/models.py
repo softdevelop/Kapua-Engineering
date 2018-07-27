@@ -7,7 +7,8 @@ from django.contrib.auth.models import AbstractUser
 from rest_framework.authtoken.models import Token
 from django.db.models.signals import post_save, post_delete, pre_save, pre_delete
 from django.dispatch import receiver
-
+from django_tenants.models import TenantMixin, DomainMixin
+from treebeard.al_tree import AL_Node
 # Create your models here.
 
 class UserBase(AbstractUser):
@@ -43,5 +44,28 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
         Token.objects.create(user=instance)
 
 class UserLog(models.Model):
-    user = models.ForeignKey("UserBase", related_name="log_at")
+    user = models.ForeignKey("UserBase", related_name="log_at",on_delete=models.CASCADE)
     creation_date = models.DateTimeField(auto_now_add=True)
+
+class Client(TenantMixin):
+    name = models.CharField(max_length=100)
+    paid_until =  models.DateField()
+    on_trial = models.BooleanField()
+    created_on = models.DateField(auto_now_add=True)
+    # default true, schema will be automatically created and synced when it is saved
+    auto_create_schema = True
+
+class Domain(DomainMixin):
+    pass
+
+class AL_TestNode(AL_Node):
+    parent = models.ForeignKey('self',
+                               related_name='children',
+                               null=True,
+                               db_index=True,on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    sib_order = models.PositiveIntegerField()
+    
+    def __str__(self):
+        return self.name
+

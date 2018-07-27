@@ -25,14 +25,11 @@ SECRET_KEY = 'c)s!-l^1)!m3@i#m5d^57@&22fx6300$+w+6k*vmqg#=#8+czj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'admin.localhost', '127.0.0.1',]
+ALLOWED_HOSTS = []
 
 # Application definition
-SHARED_APPS=(
-    'django_tenants',  # mandatory
-    'Manager',# you must list the app where your tenant model resides in
-    'treebeard',
 
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,20 +39,11 @@ SHARED_APPS=(
 
     'rest_framework',
     'rest_framework.authtoken',
-    
-)
-TENANT_APPS = (
-    # The following Django contrib apps must be in TENANT_APPS
-    'django.contrib.contenttypes',
-    'django.contrib.auth',
-)
-# INSTALLED_APPS = SHARED_APPS
-INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
-PG_EXTRA_SEARCH_PATHS = ['extensions']
 
+    'Manager',
+]
 
 MIDDLEWARE = [
-    'django_tenants.middleware.main.TenantMainMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -66,11 +54,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'djangoTenant.urls'
-PUBLIC_SCHEMA_URLCONF = 'djangoTenant.urls_public'
-
-TENANT_MODEL = "Manager.Client"
-TENANT_DOMAIN_MODEL = "Manager.Domain" 
-
 
 TEMPLATES = [
     {
@@ -79,20 +62,15 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.request',
                 'django.template.context_processors.debug',
+                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
     },
 ]
-CACHES = {
-    "default": {
-        'KEY_FUNCTION': 'django_tenants.cache.make_key',
-        'REVERSE_KEY_FUNCTION': 'django_tenants.cache.reverse_key',
-    },
-}
+
 WSGI_APPLICATION = 'djangoTenant.wsgi.application'
 
 
@@ -110,15 +88,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-)
-DATABASE_ROUTERS = (
-    'django_tenants.routers.TenantSyncRouter',
-)
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
