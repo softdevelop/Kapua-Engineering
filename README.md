@@ -10,10 +10,10 @@ A step by step series of examples that tell you have to get a development env ru
 1. Django backend.
 
 ```
-virtualenv env -p python3 env
+virtualenv -p python3 env
 ```
 ```
-pip install -r requirement.txt
+pip install -r requirements.txt
 ```
 
 2. React frontend.
