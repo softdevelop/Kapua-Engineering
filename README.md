@@ -28,21 +28,6 @@ npm
 djangoTenant
 ```
 
-## Setup Server
-1. Django backend:
-
-```
-APIURL GET: http://localhost:8000/list-node/
-```
-```
-APIURL POST: http://localhost:8000/list-node-update/
-```
-2. React frontend:
-
-```
-APIURL: http://localhost:8000/
-```
-
 ## Running
 
 1. Run server django:
@@ -54,6 +39,22 @@ APIURL: http://localhost:8000/
 ```
 	
 	npm start 
+```
+
+
+## Demo URLS
+
+1. Django backend:
+```
+APIURL GET: http://localhost:8000/list-node/
+```
+```
+APIURL POST: http://localhost:8000/list-node-update/
+```
+2. React frontend:
+
+```
+APIURL: http://localhost:8000/
 ```
 
 ### And coding style tests
