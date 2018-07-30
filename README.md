@@ -18,8 +18,30 @@ pip install -r requirements.txt
 
 2. React frontend.
 
+```
+npm
+```
+
 3. import database.
 
+```
+djangoTenant
+```
+
+## Setup Server
+1. Django backend:
+
+```
+GET APIURL : (http://localhost:8000/list-node/)
+```
+```
+POST APIURL : (http://localhost:8000/list-node-update/)
+```
+2. React frontend:
+
+```
+HOST APIURL: (http://localhost:8000/)
+```
 
 ## Running
 
@@ -29,8 +51,11 @@ pip install -r requirements.txt
 	python manage.py runserver
 ```
 2. Run react:
-```     npm start 
 ```
+	
+	npm start 
+```
+
 ### And coding style tests
 
 Explain what these tests test and why
