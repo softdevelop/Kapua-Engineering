@@ -32,15 +32,15 @@ djangoTenant
 1. Django backend:
 
 ```
-GET APIURL : (http://localhost:8000/list-node/)
+APIURL GET: http://localhost:8000/list-node/
 ```
 ```
-POST APIURL : (http://localhost:8000/list-node-update/)
+APIURL POST: http://localhost:8000/list-node-update/
 ```
 2. React frontend:
 
 ```
-HOST APIURL: (http://localhost:8000/)
+APIURL: http://localhost:8000/
 ```
 
 ## Running
