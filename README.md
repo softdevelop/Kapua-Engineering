@@ -18,6 +18,7 @@ pip install -r requirements.txt
 
 2. React frontend.
 
+3. import database.
 
 
 ## Running
@@ -28,8 +29,8 @@ pip install -r requirements.txt
 	python manage.py runserver
 ```
 2. Run react:
-
-
+```     npm start 
+```
 ### And coding style tests
 
 Explain what these tests test and why

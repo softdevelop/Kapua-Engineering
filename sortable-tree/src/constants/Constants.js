@@ -1,3 +1,3 @@
-export const URL = 'localhost:8000/api/list-node';
+export const APIURL = 'http://localhost:8000/api/';
 
 

@@ -4,7 +4,7 @@ from .models import *
 class NodeSerializer(serializers.ModelSerializer):
     class Meta:
         model = AL_TestNode
-        fields = ('id','parent','name','sib_order')
+        fields = ('id','name','parent')
 
 class UserSerializer(serializers.ModelSerializer):
     avatar_url = serializers.CharField(read_only=True)

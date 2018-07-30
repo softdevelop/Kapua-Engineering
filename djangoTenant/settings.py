@@ -25,7 +25,7 @@ SECRET_KEY = 'c)s!-l^1)!m3@i#m5d^57@&22fx6300$+w+6k*vmqg#=#8+czj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'admin.localhost', '127.0.0.1',]
+ALLOWED_HOSTS = ['localhost', 'admin.localhost', '127.0.0.1', '*']
 
 # Application definition
 SHARED_APPS=(
@@ -42,7 +42,7 @@ SHARED_APPS=(
 
     'rest_framework',
     'rest_framework.authtoken',
-    
+    'corsheaders',
 )
 TENANT_APPS = (
     # The following Django contrib apps must be in TENANT_APPS
@@ -63,6 +63,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'djangoTenant.urls'
@@ -133,6 +135,10 @@ DATABASE_ROUTERS = (
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {

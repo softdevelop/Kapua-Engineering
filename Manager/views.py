@@ -59,13 +59,11 @@ class NodeListAPIView(generics.ListAPIView):
 
 class EditNodeListAPIView(APIView):
     def post(self,request,format=None):
+        list_data = request.data.get("list",None)
         ret = {}
-        list_node = request.data.getlist("list",None)
-        # list_node = ast.literal_eval(str(list_node))
         i=1
-        for obj in list_node:
+        for obj in list_data:
             obj = ast.literal_eval(str(obj))
-            print(obj['id'])
-            AL_TestNode.objects.filter(pk=int(obj['id'])).update(parent=int(obj['parent']),name=obj['name'],sib_order=i)
+            AL_TestNode.objects.filter(pk=int(obj['id'])).update(parent=obj['parent'],name=obj['name'],sib_order=i)
             i=i+1
         return Response(ret,status=status.HTTP_200_OK)

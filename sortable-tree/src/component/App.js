@@ -1,9 +1,9 @@
 import 'react-sortable-tree/style.css';
 import React, { Component } from 'react';
 import { getTreeFromFlatData } from 'react-sortable-tree';
-import Search from "./Search"
-import { URL } from '../constants/Constants';
+import { APIURL } from '../constants/Constants';
 import axios from 'axios';
+import Tree from './Tree';
 
 export default class App extends Component {
   constructor(props) {
@@ -15,14 +15,14 @@ export default class App extends Component {
   }
 
   componentWillMount(){
-    axios.get(`${URL}`)
+    axios.get(`${APIURL}list-node/`)
     .then(res => {
       this.setState({
         treeData: getTreeFromFlatData({
-          flatData: res.data.map(node => ({ ...node, title: node.name })),
+          flatData: res.data.results.map(node => ({ ...node, title: node.name })),
           getKey: node => node.id,  
           getParentKey: node => node.parent, 
-          rootKey: 0, 
+          rootKey: null, 
         }),
       })
     })
@@ -34,7 +34,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        < Search
+        < Tree
           treeData={this.state.treeData}
         />
       </div>

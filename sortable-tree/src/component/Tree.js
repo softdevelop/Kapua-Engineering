@@ -1,11 +1,11 @@
 import 'react-sortable-tree/style.css';
 import React, { Component } from 'react';
 import SortableTree, { getFlatDataFromTree } from 'react-sortable-tree';
-import { URL } from '../constants/Constants';
+import { APIURL } from '../constants/Constants';
 import axios from 'axios';
 
 
-export default class Search extends Component {
+export default class Tree extends Component {
   constructor(props) {
     super(props);
 
@@ -23,11 +23,8 @@ export default class Search extends Component {
     });
   }
 
-  changeData = (treeData) => {
-    this.setState({
-      treeData
-    })
-    const flatData1 = getFlatDataFromTree({
+  changeData = () => {
+    const list = getFlatDataFromTree({
       treeData: this.state.treeData,
       getNodeKey: ({ node }) => node.id,
       ignoreCollapsed: false,
@@ -36,9 +33,10 @@ export default class Search extends Component {
       name: node.name,
       parent: path.length > 1 ? path[path.length - 2] : null,
     }));
-    axios.post(`${URL}`, { flatData1 })
+    
+    axios.post(`${APIURL}list-node-update/`, { list })
       .then(res => {
-        
+        console.log('success!!!');
       })
       .catch(error => {
         console.log('Error fetching and parsing data', error);
@@ -82,7 +80,7 @@ export default class Search extends Component {
             id="find-box"
             type="text"
             placeholder="Search..."
-            style={{ fontSize: '1rem' }}
+            style={{ fontSize: '1rem' , marginRight: '10px'}}
             value={searchString}
             onChange={event =>
               this.setState({ searchString: event.target.value })
@@ -91,6 +89,7 @@ export default class Search extends Component {
 
           <button
             className="btn btn-info"
+            style={{ marginRight: '10px'}}
             type="button"
             disabled={!searchFoundCount}
             onClick={selectPrevMatch}
@@ -115,14 +114,11 @@ export default class Search extends Component {
           </span>
         </form>
 
-        <div style={{ height: 400 }}>
+        <div style={{ height: 500 }}>
           <SortableTree
             treeData={this.state.treeData}
-            onChange={
-
-              treeData => this.changeData(treeData)
-
-            }
+            onChange={treeData => this.setState({treeData})}
+            onMoveNode={this.changeData}
             searchMethod={customSearchMethod}
 
             searchQuery={searchString}
