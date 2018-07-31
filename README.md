@@ -18,8 +18,16 @@ pip install -r requirements.txt
 
 2. React frontend.
 
+Open folder 'sortable-tree' with terminal and install packgages:
+
 ```
-npm
+npm install
+```
+```
+sudo apt-get install -y nodejs
+```
+```
+npm install axios
 ```
 
 3. import database.

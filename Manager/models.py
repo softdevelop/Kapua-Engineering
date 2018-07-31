@@ -59,6 +59,7 @@ class Domain(DomainMixin):
     pass
 
 class AL_TestNode(AL_Node):
+
     parent = models.ForeignKey('self',
                                related_name='children',
                                null=True,
@@ -68,4 +69,6 @@ class AL_TestNode(AL_Node):
     
     def __str__(self):
         return self.name
-
+    class Meta:
+        verbose_name = 'Directory'
+        verbose_name_plural = 'Directory'

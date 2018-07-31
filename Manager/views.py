@@ -67,3 +67,7 @@ class EditNodeListAPIView(APIView):
             AL_TestNode.objects.filter(pk=int(obj['id'])).update(parent=obj['parent'],name=obj['name'],sib_order=i)
             i=i+1
         return Response(ret,status=status.HTTP_200_OK)
+
+class IndexView(TemplateView):
+    template_name = 'index.html'
+        
