@@ -121,17 +121,6 @@ DATABASE_ROUTERS = (
     'django_tenants.routers.TenantSyncRouter',
 )
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'UWASSESS01',
-#         'USER': 'uwassess_admin',
-#         'PASSWORD': 'adminpwd01',
-#         'HOST': 'uwassess01.ca5syam88qk6.us-east-1.rds.amazonaws.com',
-#         'PORT': '5432',
-#     }
-# }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
