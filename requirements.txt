@@ -2,7 +2,7 @@ alabaster==0.7.11
 Babel==2.6.0
 certifi==2018.4.16
 chardet==3.0.4
-Django==2.0
+Django==2.2.24
 django-tenants==2.0.0
 django-treebeard==4.3
 djangorestframework==3.8.2
