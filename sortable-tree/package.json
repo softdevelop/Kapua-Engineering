@@ -6,7 +6,7 @@
     "axios": "^0.18.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-scripts": "0.9.5",
+    "react-scripts": "5.0.1",
     "react-sortable-tree": "^2.2.0",
     "react-sortable-tree-theme-full-node-drag": "^1.1.0",
     "react-sortable-tree-theme-minimal": "0.0.13"
